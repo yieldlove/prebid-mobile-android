@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,6 +100,24 @@ public class PrebidMobile {
      */
     public static List<ExternalUserId> getExternalUserIds() {
         return PrebidMobile.externalUserIds;
+    }
+
+    private static HashMap<String, String> customHeaders = new HashMap<>();
+
+    /**
+     * HashMap containing a list of custom headers to add to requests
+     * @param customHeaders
+     */
+    public static void setCustomHeaders(HashMap<String, String> customHeaders){
+        PrebidMobile.customHeaders = customHeaders;
+    }
+
+    /**
+     * Returns the HashMap containing a list of custom headers to add to requests
+     * @@return externalUserIds as Array.
+     */
+    public static HashMap<String, String> getCustomHeaders() {
+        return PrebidMobile.customHeaders;
     }
 
     private static WeakReference<Context> applicationContextWeak;

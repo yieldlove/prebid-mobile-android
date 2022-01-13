@@ -26,6 +26,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
+
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = BaseSetup.testSDK)
 public class PrebidMobileTest extends BaseSetup {
@@ -50,5 +52,16 @@ public class PrebidMobileTest extends BaseSetup {
         assertTrue(PrebidMobile.getStoredBidResponses().isEmpty());
         PrebidMobile.setPbsDebug(true);
         assertTrue(PrebidMobile.getPbsDebug());
+    }
+
+    @Test
+    public void testSetCustomHeaders() {
+        HashMap<String, String> customHeaders = new HashMap<>();
+        customHeaders.put("key1", "value1");
+        customHeaders.put("key2", "value2");
+        PrebidMobile.setCustomHeaders(customHeaders);
+
+        assertFalse(PrebidMobile.getCustomHeaders().isEmpty());
+        assertEquals(2, PrebidMobile.getCustomHeaders().size());
     }
 }
